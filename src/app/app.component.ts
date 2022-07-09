@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Customer } from './models/customer';
+import { CustomerService } from './services/customer.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shopAng.UI';
+  customers : Customer[] = [];
+
+  constructor(private customerService: CustomerService) {}
+
+  ngOnInit() : void {
+    this.customers =  this.customerService.getAllCustomer();
+    console.log(this.customers);
+  }
 }
