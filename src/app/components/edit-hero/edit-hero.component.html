@@ -1,0 +1,14 @@
+<div *ngIf="customer">
+<h2> {{customer.firstName}}  </h2>
+<div>
+    First Name:
+    <input [(ngModel)]="customer.firstName" placeholder="First Name"/>
+</div>
+<div>
+Last Name:
+<input [(ngModel)]="customer.lastName" placeholder="Last Name"/>
+</div>
+<button (click)="updateCustomer(customer)" *ngIf="customer.id">Update</button>
+<button (click)="deleteCustomer(customer)" *ngIf="customer.id">Delete</button>
+<button (click)="createCustomer(customer)" *ngIf="customer.id">Create</button>
+</div>

@@ -13,8 +13,26 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   public getAllCustomer() : Observable<Customer[]> {
-  
-    return this.http.get<Customer[]>('${environment.apiUrl}/${this.url}');
+    return this.http.get<Customer[]>(`${environment.apiUrl}/${this.url}`);
+  }
 
+  public updateCustomer(customer: Customer): Observable<Customer[]> {
+    return this.http.put<Customer[]>(
+      `${environment.apiUrl}/${this.url}` ,
+      customer
+    );
+  }
+  public createCustomer(customer: Customer): Observable<Customer[]> {
+    return this.http.post<Customer[]>(
+      `${environment.apiUrl}/${this.url}` ,
+      customer
+    );
+  }
+  public deleteCustomer(customer: Customer): Observable<Customer[]> {
+    return this.http.delete<Customer[]>(
+      `${environment.apiUrl}/${this.url}/${customer.id}` ,
+      
+    );
   }
 }
+  

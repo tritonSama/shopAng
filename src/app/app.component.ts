@@ -10,6 +10,7 @@ import { CustomerService } from './services/customer.service';
 export class AppComponent {
   title = 'shopAng.UI';
   customers : Customer[] = [];
+  customerToEdit?: Customer;
 
   constructor(private customerService: CustomerService) {}
 
@@ -17,5 +18,17 @@ export class AppComponent {
     this.customerService
     .getAllCustomer()
     .subscribe((result: Customer[]) => (this.customers = result));
+  }
+
+  updateCustomerList(customers: Customer[]) {
+    this.customers = customers;
+  }
+
+  initNewCustomer() {
+    this.customerToEdit = new Customer();
+  }
+
+  editCustomer(customer: Customer) {
+    this.customerToEdit = customer;
   }
 }
