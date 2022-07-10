@@ -14,7 +14,8 @@ export class AppComponent {
   constructor(private customerService: CustomerService) {}
 
   ngOnInit() : void {
-    this.customers =  this.customerService.getAllCustomer();
-    console.log(this.customers);
+    this.customerService
+    .getAllCustomer()
+    .subscribe((result: Customer[]) => (this.customers = result));
   }
 }
